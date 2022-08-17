@@ -1,8 +1,12 @@
 FROM node:10
 
+# package.json과 server.js같은 개발자가 만든 소스파일들을 저장할 경로 생성, docker run -it mnb9139/nodejs:latest sh 명령어로 컨테이너 실행후 ls 명령어 치면 Dockerfile  node_modules  package-lock.json  package.json  server.js 파일처럼 우리가 만든 파일만 존재한다 => ls를 치면 루트 디렉터리가 아닌 /usr/src/app 디렉터리가 접근되기 때문이다. 
+WORKDIR /usr/src/app
+
 # 임시컨테이너의 ./ (현재경로)에 package.json을 복붙함
 # COPY package.json ./
-# 현재 경로의 모든 파일을 임시컨테이너 속으로 복붙함, (package.json, server.js)
+
+# 현재 경로의 모든 파일을 임시컨테이너 속으로 복붙함, (package.json, server.js) => but이러면 dev, bin, package.json, server.js등 모든 파일이 한 디렉터리 안으로 묶여짐 => 파일명 중복문제 발생가능성 존재, 정리정돈 문제 발생 => WORKDIR를 이용해 디렉터리 관리를 해야한다.
 COPY ./ ./ 
 
 # package.json에 명시한 express 다운로드 => 임시컨테이너속에 package.json이 없으므로 오류가 발생, COPY를 이용해서 안으로 넣어주어야함
@@ -10,8 +14,6 @@ RUN npm install
 
 # 노드 웹 서버를 작동시키려면 node + 엔트리파일명을 입력해야한다. 이미지를 만들고 컨테이너를 실행시키면 server.js를 못찾는다는 오류가 발생, server.js도 컨테이너 안으로 COPY해야한다.
 CMD ["node", "server.js"]
-
-
 
 
 

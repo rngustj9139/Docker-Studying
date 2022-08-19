@@ -17,6 +17,8 @@ CMD ["node", "server.js"]
 
 
 
+# npm init후 이후 => package.json의 dependencies에 express 추가하기
 # 현재컴퓨터의 로컬호스트 포트번호와 컨테이너 안의 로컬호스트의 포트번호 8080을 매핑시켜주어야함 => docker run -p 5000:8080 mnb9139/nodejs:latest 명령어를 실행해야함
 # 5000포트로 들어가면 이 포트는 컨테이너 속 8080과 매핑되어있어서 8080으로 접속이 된다.
 # 브라우저로 접속할때는 localhost:5000으로 들어가야한다.
+# docker run -d -p 5000:8080 mnb9139/nodejsmodified:latest 에서 -d는 컨테이너를 실행시킨다음에 터미널에서 빠져나오게 해주는 옵션이다 (컨테이너는 계속 실행된다.)

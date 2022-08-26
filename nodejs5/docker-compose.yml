@@ -1,0 +1,11 @@
+version: "3" # docker compose의 버전
+services: # 이곳에 실행하려는 컨테이너 정보를 작성
+  redis-server: # 컨테이너 이름
+    image: "redis" # 컨테이너에서 사용하려는 이미지(레디스 서버)
+  node-app: # 컨테이너 이름  
+    build: . # 도커파일을 읽어서 빌드를 하고 이미지를 만들어야하는데 그 도커파일의 위치 경로를 명시한다. (.은 현재 디렉터리를 의미)
+    ports:
+      - "5000:8080" # 로컬에 관한 포트:컨테이너에 관한 포트(포트매핑)
+
+# 이후 docker-compose up을 실행하면됨, 실행시키면서 빌드를 진행할때에는 docker-compose up --build
+# docker-compose stop으로 중지 가능

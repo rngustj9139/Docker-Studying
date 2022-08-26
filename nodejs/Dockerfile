@@ -10,6 +10,7 @@ WORKDIR /usr/src/app
 COPY ./ ./ 
 
 # package.json에 명시한 express 다운로드 => 임시컨테이너속에 package.json이 없으므로 오류가 발생, COPY를 이용해서 안으로 넣어주어야함
+# node_modules이 컨테이너 안에 생긴다.
 RUN npm install 
 
 # 노드 웹 서버를 작동시키려면 node + 엔트리파일명을 입력해야한다. 이미지를 만들고 컨테이너를 실행시키면 server.js를 못찾는다는 오류가 발생, server.js도 컨테이너 안으로 COPY해야한다.

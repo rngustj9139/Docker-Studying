@@ -8,4 +8,7 @@ services: # 이곳에 실행하려는 컨테이너 정보를 작성
       - "5000:8080" # 로컬에 관한 포트:컨테이너에 관한 포트(포트매핑)
 
 # 이후 docker-compose up을 실행하면됨, 실행시키면서 빌드를 진행할때에는 docker-compose up --build
-# docker-compose stop으로 중지 가능
+# docker-compose stop으로 중지 가능 혹은 docker-compose down
+# docker-compose up => 이미지가 없을때 이미지를 빌드하고 컨테이너 시작
+# docker-compose up --build => 이미지가 있든 없든 이미지를 빌드하고 컨테이너 시작
+# docker-compose up --build으로 실행시켜야 에러발생안함 node버전은 14로해야하고 redis버전은 4.3.0으로 해야함

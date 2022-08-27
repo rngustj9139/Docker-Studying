@@ -13,4 +13,4 @@ CMD ["npm", "run", "start"]
 # 도커를 쓰므로 local 환경에 node_modules 파일 필요 없음, 또 node_modules가 로컬에 존재하면 COPY를 할때 node_modules까지 카피됨(어차피 컨테이너에는 npm install을 통해 node_modules가 생긴다.)
 # Docker파일은 개발환경에서 쓰는 것과 운영환경에서 쓰는 것을 분리해주어야하는데 개발환경에서쓰이는 도커파일은 Dockerfile.dev이다.
 # 도커파일을 이미지로 빌드 할때는 docker build -f Dockerfile.dev -t mnb9139/part6:latest . 와 같이 해주어야한다.
-# 이미지를 컨테이너화할때는 docker run -p 3000:3000 mnb9139/part6:latest 와 같이 포트 매핑을 수행해주어야 한다.
+# 이미지를 컨테이너화할때는 docker run -p 3000:3000 -it mnb9139/part6:latest 와 같이 포트 매핑을 수행해주어야 한다.

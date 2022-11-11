@@ -3,7 +3,7 @@ const redis = require("redis");
 
 const client = redis.createClient({ // 레디스 클라이언트 생성
     socket: {
-        host: "redis-server", // 도커 환경에서는 redis-server를 추가하고(docker-compose.yml파일에 명시한 컨테이너 이름이다.) redis서버가 작동하는 곳이 redis-server.com이라면 https://redis-server.com을 추가한다.
+        host: "redis-server", // 도커 환경에서는 redis-server를 추가하고(redis-server는 docker-compose.yml파일에 명시한 컨테이너 이름이다.) redis서버가 작동하는 곳이 redis-server.com이라면 https://redis-server.com을 추가한다.
         port: 6379 // 레디스의 기본 포트는 6379이다.
     }
 });

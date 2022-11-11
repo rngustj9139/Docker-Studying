@@ -1,9 +1,14 @@
 # 운영환경에서는 npm run build를 통해 나온 빌드파일을 만든다음에 사용자의 요청이 들어오면 nginx라는 웹서버가 빌드파일을 통해 요청을 처리한다.
 FROM node:alpine as builder 
-WORKDIR '/usr/src/app'
+
+WORKDIR /usr/src/app
+
 COPY package.json .
+
 RUN npm install
+
 COPY ./ ./
+
 # start가 아닌 build이다.
 RUN npm run build
 
